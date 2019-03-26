@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <style>
+
+  :root {
+    --backgrnd: red;
+    --thismanypxls : 0px;
+  }
+
+  .green-box {
+    padding: 10px;
+    border-color: green;
+    border-style: solid;
+    border-width: 10px;
+    width: 100%;
+  }
+
+  @media (min-width: 600px) {
+    :root {
+      --backgrnd : green;
+    }
+
+  }
+
+  #watchImg {
+    background-color: var(--backgrnd, black);
+    padding: var(--thismanypxls);
+  }
+
+  h1 {
+    font-size: 50px;
+  }
+
+  .responsive-dimen {
+    width: 50%;
+  }
+  </style>
+
+  <head>
+    <meta charset="utf-8">
+    <title>Page 2</title>
+  </head>
+
+  <body>
+    <table style="background-color:silver;">
+      <tr>
+        <td style="font-family:monospace; "><a href="index.html"><h1 style="color:red; font-size:var(--thismanypxls);">Home</h1></a></td>
+        <td><a href="svn kirona auto.png" style="color:yellow">Open watch image.</a></td>
+      </tr>
+    </table>
+    <hr>
+    <table>
+      <tr>
+        <!-- these are the three things-->
+        <td id="watchImg" width = "25%"><img src="svn kirona auto.png" width="100%" alt="404 not found"></td>
+        <td class="responsive-dimen"><img width = "100%" src="https://cdn-image.travelandleisure.com/sites/default/files/styles/1600x1000/public/1515518660/central-park-new-york-city-WHEREYOU0118.jpg?itok=HQHgfFPd" alt="no internet"></td>
+        <td id = "flowerImg" width = "25%"><img src="https://images.pexels.com/photos/67636/rose-blue-flower-rose-blooms-67636.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" width="100%" alt="no internet"></td>
+      </tr>
+    </table>
+
+  </body>
+</html>

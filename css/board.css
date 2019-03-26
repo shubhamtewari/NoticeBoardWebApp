@@ -1,0 +1,54 @@
+.pageLayout {
+  display: grid;
+  grid-template-rows: 10vh 80vh;
+}
+
+.boardLayout {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1.5fr ;
+  grid-template-rows: repeat(9);
+}
+
+.headerBar {
+  display: grid;
+  grid-template-rows: 1fr 1fr
+}
+
+#time {
+  grid-row: 1/2;
+}
+
+#day {
+  grid-row: 2/3;
+}
+
+#notices {
+  grid-row: 1/10;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  background-color: grey;
+}
+
+#adminnotices {
+  background-color: red;
+  grid-column: 2/3;
+  grid-row: 1/7;
+}
+
+#news {
+  background-color: blue;
+  grid-column: 2/3;
+  grid-row: 7/10;
+}
+
+#poll {
+  background-color: yellow;
+  grid-column: 3/4;
+  grid-row: 1/6;
+}
+
+#events {
+  background-color: pink;
+  grid-column: 3/4;
+  grid-row: 6/10;
+}
