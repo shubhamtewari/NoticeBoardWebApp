@@ -147,6 +147,8 @@
 
     <!-----------------scripts-------------------->
 
+    <script type='text/javascript' src='config.js'></script>
+    
     <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
     <!--Firebase App (the core Firebase SDK) is always required and must be listed first-->
     <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase-app.js"></script>
@@ -157,15 +159,7 @@
     <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-storage.js"></script>
     <script>
       // Initialize Firebase
-      var config = {
-    apiKey: "AIzaSyDCck_QhocplLAagDRChabxnUlzjmTc0yg",
-    authDomain: "notice-board-60616.firebaseapp.com",
-    databaseURL: "https://notice-board-60616.firebaseio.com",
-    projectId: "notice-board-60616",
-    storageBucket: "notice-board-60616.appspot.com",
-    messagingSenderId: "118239249055",
-    appId: "1:118239249055:web:95befc02731ddb49"
-  };
+      var config = configKey;
       firebase.initializeApp(config);
     </script>
 
@@ -185,6 +179,8 @@
       integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
       crossorigin="anonymous"
     ></script>
+
+    
 
     <!---------------------------main script---------------------------->
     <script type="text/javascript">
