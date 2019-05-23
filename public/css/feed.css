@@ -1,0 +1,275 @@
+:root {
+  --primaryColor: #7da2a9;
+  --primaryDark: #1f3044;
+  --background: #f7f7f7;
+  --deepbackground: lightgrey;
+  --accent1: #28559a;
+}
+
+p {
+  margin: 0;
+}
+
+h3 {
+  margin: 0;
+}
+
+body {
+  margin: 0;
+  height: 100%;
+  font-size: 100%;
+  width: 100%;
+  background-color: var(--deepbackground);
+}
+
+#header {
+  background-image: url(http://indianadmissionsguru.com/wp-content/uploads/2018/01/GOVIND-BALLABH-PANT-ENGINEERING-COLLEGE-GARHWAL.jpg);
+  background-color: var(--primaryColor);
+  height: 9rem;
+  background-size: cover;
+  text-align: center;
+}
+
+#header span{
+font-weight: bold;
+font-size: 1.5rem;
+}
+
+
+
+nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr 2.5fr 1fr 1fr;
+  background-color: var(--accent1);
+  height: 3rem;
+  position: relative;
+  width: inherit;
+  align-items: center;
+  justify-items: center;
+}
+
+.navFooter {
+  display: grid;
+  grid-template-columns: 1fr 1fr 2.5fr 1fr 1fr;
+  height: 4px;
+  width: inherit;
+}
+
+.bgBlue {
+  background-color: lightblue;
+}
+
+.bgPink {
+  background-color: pink;
+}
+
+.workspace {
+  background-color: orange;
+}
+
+.bgYellow {
+  background-color: yellow;
+}
+
+.bgGreen {
+  background-color: lightgreen;
+}
+
+nav span {
+  align-self: center;
+  justify-self: center;
+  color: aquamarine;
+}
+
+.stickyNav {
+  position: fixed;
+  top: 0;
+  z-index: 100;
+}
+
+.stickyMain {
+  padding-top: 3rem;
+}
+
+main {
+  width: 100%;
+  height: auto;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+}
+
+nav a:hover {
+  text-decoration-style: none;
+  text-decoration: none;
+  color: red;
+}
+
+.cont {
+  background-color: var(--background);
+  height: auto;
+  width: inherit;
+  display: grid;
+  justify-self: center;
+  align-self: center;
+  margin-bottom: 0.5em;
+}
+
+.contChild {
+  padding: 0.5em 1.5em;
+  border-top: lightgrey solid 1px;
+}
+
+.timestampID {
+  display: none;
+}
+
+.adminNotice img {
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 5px;
+  margin-top: 0.5rem;
+  align-self: center;
+}
+
+.adminNotice span {
+  color: grey;
+  font-size: 0.8rem;
+}
+
+.notice {
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.notice span {
+  font-size: 0.8rem;
+  color: grey;
+}
+
+.notice hr {
+  margin: 0.3rem 0;
+}
+
+.contBottomBar {
+  width: 100%;
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1.8fr 1fr;
+}
+
+#votes {
+  display: flex;
+  justify-content: flex-end;
+  align-content: center;
+}
+
+#votes a {
+  font-size: 1.3rem;
+  
+  margin-left: 0.5rem;
+}
+
+#positiveButton {
+  color: grey;
+}
+
+#negativeButton {
+  color: grey;
+}
+
+#positiveButton:hover {
+  color: rgb(42, 224, 42);
+}
+
+#negativeButton:hover {
+  color: rgb(201, 26, 26);
+}
+
+.positiveButtonActive {
+  color: rgb(42, 224, 42);
+}
+
+.negativeButtonActive {
+  color: rgb(201, 26, 26);
+}
+
+.voteNo {
+  margin-left: 0.3rem;
+}
+
+.noticeCont {
+  box-sizing: border-box;
+  border-left: pink solid 4px;
+}
+
+.adminNoticeCont {
+  box-sizing: border-box;
+  border-left: lightblue solid 4px;
+}
+
+.pollsCont {
+  box-sizing: border-box;
+  border-left: yellow solid 4px;
+}
+
+.poll span {
+  font-size: 0.8rem;
+  color: grey;
+}
+
+.poll hr {
+  margin: 0.5rem 0 0.3rem 0 ;
+}
+
+.progress {
+  margin-top: 0.5rem;
+  height: 8px;
+}
+
+#greenHeart {
+  color: green;
+}
+
+#redHeart {
+  color: red;
+}
+
+#blueHeart {
+  color: blue;
+}
+
+#yellowHeart {
+  color: rgb(236, 199, 33);
+}
+
+.eventsCont {
+  width: 100%;
+  box-sizing: border-box;
+  display: grid;
+  border-left: lightgreen solid 4px;
+  grid-template-rows: auto;
+}
+
+.event {
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.event hr {
+  margin: 0.3rem 0 ;
+}
+
+.event span {
+  font-size: 0.8rem;
+  color: grey;
+}
+
+footer {
+  color: grey;
+  font-size: 0.8rem;
+  margin-left: 1%;
+  margin-top: -0.4em;
+}

@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>feed</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+    <link rel="stylesheet" href="css/feed.css" />
+    <!-- dark #150734 #0F2557 #28559A #3778C2 #4B9FE1 #63BCE5 #7ED5EA light -->
+  </head>
+
+  <body>
+    <div id="header">
+      <span>GBPIET Connect</span>
+    </div>
+
+    <!-- Header ends -->
+
+    <nav id="navbar">
+      <a class="material-icons navElement" href="#adminNoticeContId">
+        event_note
+      </a>
+        <a class="material-icons navElement" href="#noticeContId">
+          note
+        </a>
+          <span>workspaces</span>
+          <a class="material-icons navElement" href="#pollContId">
+            pie_chart
+          </a>
+            <a class="material-icons navElement" href="#eventContId">
+              access_time
+            </a>
+    </nav>
+
+    <div class="navFooter">
+      <span class="bgBlue"></span>
+      <span class="bgPink"></span>
+      <span class="workspace"></span>
+      <span class="bgYellow"></span>
+      <span class="bgGreen"></span>
+    </div>
+    <!-- Nav ends -->
+
+    <main id="mainId">
+      <!-- 1 -->
+      <div id="adminNoticeContId" class="adminNoticeCont cont">
+        <div class="adminNotice contChild">
+        
+          <span>#administrativenotice</span>
+          <p>loading...</p>
+          <img
+            id = "testImg"
+            class = "adminImages"
+            src="resources/loading.gif"
+            alt=""
+            onclick="onCLickImages()"
+          />
+          <span>loading...</span>
+        </div>
+      </div>
+
+      <!-- 2 -->
+      <div id="noticeContId" class="noticeCont cont">
+        <div class="notice contChild">
+            <span>#notice</span>
+          <h3><b>loading...</b></h3>
+          <p>loading...</p>
+          <hr>
+          <div class="contBottomBar">
+            <span id="author">loading...</span>
+            <span id="votes">
+              <a id="positiveButton" href="#" class="material-icons">thumb_up_alt</a>
+              <span class="voteNo"></span>
+              <a id="negativeButton" href="#" class="material-icons">thumb_down_alt</a>
+              <span class="voteNo"></span>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3 -->
+      <div id="pollContId" class="pollsCont cont">
+        <div class="poll contChild">
+            <span>#poll</span>
+              <h3>loading...</h3>
+              <hr>
+              <div class="votesCont">
+                  
+                <span class="question">loading...</span>
+            <div class="progress">
+              <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <span class="question">loading...</span>
+                  <div class="progress">
+                    <div class="progress-bar bg-danger" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+            <span class="question">loading...</span>
+            <div class="progress">
+              <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <span class="question">loading...</span>
+            <div class="progress">
+              <div class="progress-bar bg-warning" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            
+            </div>
+            <hr>
+            <div class="contBottomBar">
+              <span>loading...</span>
+                <span id="votes">
+                  <a onclick="selectColor(event)" id="greenHeart" class="material-icons pollVotes">favorite</a>
+                  <a onclick="selectColor(event)" id="redHeart" class="material-icons pollVotes">favorite</a>
+                  <a onclick="selectColor(event)" id="blueHeart" class="material-icons pollVotes">favorite_border</a>
+                  <a onclick="selectColor(event)" id="yellowHeart" class="material-icons pollVotes">favorite</a>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        
+
+      <!-- 4 -->
+      <div id="eventContId" class="eventsCont cont">
+        <div class="event contChild">
+          <span>#upcomingevent</span>
+          <h3>loading...</h3>
+          <p>loading...</p>
+          <hr>
+          <span>loading...</span>
+        </div>
+      </div>
+    </main>
+
+    <!-- main ends -->
+
+    <footer>@shubhamtewari</footer>
+
+    <!-----------------scripts-------------------->
+
+    <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
+    <!--Firebase App (the core Firebase SDK) is always required and must be listed first-->
+    <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase-app.js"></script>
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-storage.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+    apiKey: "AIzaSyDCck_QhocplLAagDRChabxnUlzjmTc0yg",
+    authDomain: "notice-board-60616.firebaseapp.com",
+    databaseURL: "https://notice-board-60616.firebaseio.com",
+    projectId: "notice-board-60616",
+    storageBucket: "notice-board-60616.appspot.com",
+    messagingSenderId: "118239249055",
+    appId: "1:118239249055:web:95befc02731ddb49"
+  };
+      firebase.initializeApp(config);
+    </script>
+
+    <!--jquery, popper, bootstrap imports-->
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+
+    <!---------------------------main script---------------------------->
+    <script type="text/javascript">
+      var workspaceToLoad;
+      
+      /**------------sticky nav bar--------------**/
+      window.onscroll = function() {
+        stickNavBar();
+      };
+
+      var offsetNav = navbar.offsetTop;
+
+      function stickNavBar() {
+        var navbar = document.getElementById("navbar");
+
+        if (window.pageYOffset >= offsetNav) {
+          navbar.classList.add("stickyNav");
+          document.getElementById("mainId").classList.add("stickyMain");
+        }
+        if (window.pageYOffset < offsetNav) {
+          navbar.classList.remove("stickyNav");
+          document.getElementById("mainId").classList.remove("stickyMain");
+        }
+      }
+      /**------------sticky nav bar END--------------**/
+
+      /*******------creating the html elements------*******/
+      function createPoll(pollQuestion, pollOpt, pollOptVote, noOfOpt, asker) {
+        var barThemes = ["bg-success", "bg-danger", "bg-info", "bg-warning"];
+        function pollQues(pollOptSing) {
+          return "<span class=\"question\">"+pollOptSing+"</span>";
+        }
+        function pollBar(pollVoteSing, bartheme) {
+          return "<div class=\"progress\"> <div class=\"progress-bar "+bartheme+"\" role=\"progressbar\" style=\"width: "+pollVoteSing+"%\" aria-valuenow=\""+pollVoteSing+"\" aria-valuemin=\"0\" aria-valuemax=\"100\"></div> </div>";
+        }
+        var pollElementHeader = "<div class=\"poll contChild\"> <span>#poll</span> <h3>"+pollQuestion+"</h3> <hr> <div class=\"votesCont\">";
+        var pollFooter = "</div> <hr> <div class=\"contBottomBar\"> <span>@"+asker.toLowerCase().replace(/\s/g, '')+"</span> <span id=\"votes\">"+
+            "<a onclick=\"selectColor(event)\" id=\"greenHeart\" class=\"material-icons pollVotes\">favorite</a>"+
+             "<a onclick=\"selectColor(event)\" id=\"redHeart\" class=\"material-icons pollVotes\">favorite</a>"+
+             "<a onclick=\"selectColor(event)\" id=\"blueHeart\" class=\"material-icons pollVotes\">favorite_border</a>"+
+              "<a onclick=\"selectColor(event)\" id=\"yellowHeart\" class=\"material-icons pollVotes\">favorite</a>"+
+              "</span>"+
+            "</div>"+
+          "</div>";
+          for(let i=0;i<noOfOpt;i++) {
+           pollElementHeader += pollQues(pollOpt[i]) + pollBar(pollOptVote[i], barThemes[i]);
+         }
+         return pollElementHeader + pollFooter;
+         }
+
+         function createNotice(noticeTitle, noticeBody, noticeAuthor, posVotes, negVotes) {
+          return "<div class=\"notice contChild\"> <span>#notice</span> <h3><b>"+noticeTitle+"</b></h3> <p>"+noticeBody
+            +"</p> <hr> <div class=\"contBottomBar\"> <span id=\"author\">@"+noticeAuthor.toLowerCase().replace(/\s/g, '')+"</span> <span id=\"votes\"> <a id=\"positiveButton\" href=\"#\" class=\"material-icons\">thumb_up_alt</a>"
+              +"<span class=\"voteNo\">"+posVotes+"</span> <a id=\"negativeButton\" href=\"#\" class=\"material-icons\">thumb_down_alt</a> <span class=\"voteNo\">"+negVotes+"</span>"+
+            "</span> </div> </div>";
+         }
+
+         function createEvent(eventStatus, eventName, eventDetails, eventStart, eventEnd) {
+          return "<div class=\"event contChild\">"+
+          "<span>"+"#"+eventStatus.toLowerCase()+"event"+"</span>"+
+          "<h3>"+eventName+"</h3>"+
+          "<p>"+eventDetails+"</p>"+
+          "<hr>"+
+          "<span>"+eventStart+" to "+eventEnd+"</span>"+
+          "</div>\n";
+         }
+
+         function createAdmin(adminTimestamp, adminTitle, adminAuthor) {
+          return "<div class=\"adminNotice contChild\">"+
+          "<span class=\"timestampID\">"+adminTimestamp+"</span><span>#administrativenotice</span> <p>"+adminTitle+"</p>"+
+          "<img id=\""+adminTimestamp+"\" class=\"adminImages\" src=\"resources/loading.gif\" alt=\""+adminTimestamp+"\" onclick=\"onCLickImages()\"/>"+
+          "<span>@"+(adminAuthor==""?"anonymous":adminAuthor.toLowerCase())+"</span>";
+          "</div>"
+         }
+
+         function loadAdminImages(adminNotices) {
+          var images = document.getElementsByClassName("adminImages");
+          console.log(images);
+          for(let i = 0;i<images.length;i++) {
+            var storageRef = firebase.storage().ref("AdminNotices/CSE/"+images[i].id);
+          storageRef.getDownloadURL().then(function(url) {
+            console.log(url);
+            images[i].src = url;
+          });
+          }
+         }
+      /*******------creating the html elements END------*******/ 
+
+      /*******------firebase stuff-------*******/
+      var firebaseref = firebase.database();
+      firebase.database().ref("demo/displayBoard/presentEventStructures").on('value',function(snapshot) {
+      eventList = snapshot.val();
+      console.log(eventList);
+      var eventCont = document.getElementById("eventContId");
+      eventCont.innerHTML = "";
+      for(let i=0;i<eventList.length;i++) {
+        eventCont.innerHTML += createEvent(eventList[i].eventStatus, eventList[i].eventName, eventList[i].eventDetails, eventList[i].eventStartDate, eventList[i].eventEndDate);
+      }
+      });
+
+
+      firebase.database().ref("demo/displayBoard/presentNoticeStructures").on('value', function(snapshot) {
+      noticeList = snapshot.val();
+      console.log(noticeList);
+      var noticeCont = document.getElementById("noticeContId");
+      noticeCont.innerHTML = "";
+      for(let i=0;i<noticeList.length;i++) {
+        noticeCont.innerHTML += createNotice(noticeList[i].noticeTitle, noticeList[i].noticeBody, noticeList[i].noticeCustomer.name, noticeList[i].positiveVotes, noticeList[i].negativeVotes);
+      }
+      });
+
+      firebase.database().ref("demo/displayBoard/presentPollStructures").on("value", function(snapshot) {
+        var pollList = snapshot.val();
+        console.log(pollList);
+        var pollCont = document.getElementById("pollContId");
+        pollCont.innerHTML = "";
+        for(let i=0;i<pollList.length;i++) {
+          pollCont.innerHTML += createPoll(pollList[i].pollQuestion, pollList[i].pollOptions, pollList[i].pollOptionsVote, pollList[i].numberOfOptions, pollList[i].customer.name);
+        }
+      });
+
+      firebase.database().ref("AdminNoticesStorage/demo").on("value", function(snapshot) {
+        var adminNotices = snapshot.val();
+        var adminCont = document.getElementById("adminNoticeContId");
+        adminCont.innerHTML = "";
+        for(var i in adminNotices) {
+          adminCont.innerHTML += createAdmin(adminNotices[i].noticeTimeStamp, adminNotices[i].noticeTitle, adminNotices[i].noticeCustomer.name);
+        }
+        //loadAdminImages require
+        loadAdminImages(adminNotices);
+        });
+
+      
+
+      /*
+      var storageRef = firebase.storage().ref('AdminNotices/CSE/1550744149929');
+      storageRef.getDownloadURL().then(function(url) {
+        imgtst = document.getElementById("testImg");
+        imgtst.src = url;
+      });
+      firebase.database().ref("AdminNoticesStorage").once("value").then(function(snapshot) {console.log(snapshot.val())});
+      */
+
+      /*******------firebase stuff END-------*******/
+
+      function fireClickEvent(element) {
+        var evt = new window.MouseEvent("click", {
+          view: window,
+          bubbles: true,
+          cancelable: true
+        });
+
+        element.dispatchEvent(evt);
+      }
+
+      function onCLickImages() {
+        var a = document.createElement("a");
+        a.href = "resources/background.jpg";
+        fireClickEvent(a);
+      }
+
+      function selectColor(event) {
+        if(event.target.innerHTML=="favorite_border") {
+          event.target.innerHTML = "favorite";
+          return;
+        }
+        var pollVotes = document.getElementsByClassName("pollVotes");
+        console.log(pollVotes);
+        for(var i=0;i<pollVotes.length;i++) {
+          pollVotes[i].innerHTML = "favorite";
+          console.log(pollVotes);
+        }
+        event.target.innerHTML = "favorite_border";
+      }
+    </script>
+    <!---------------------------main script END---------------------------->
+  </body>
+</html>

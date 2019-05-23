@@ -1,0 +1,72 @@
+
+body {
+  margin: 0;
+}
+
+#headerMain {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/d/d1/Mount_Everest_as_seen_from_Drukair2_PLW_edit.jpg");
+  background-size: cover;
+  background-color: darkblue;
+}
+
+#headerInfo {
+  width: 60%;
+}
+
+#headerInfo h1 {
+text-align: center;
+color: white;
+}
+
+#headerInfo div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+}
+
+#infoText {
+  border-left-style: solid;
+  border-left-width: medium;
+  border-color: white;
+  color: white;
+  border-spacing: 3em;
+  font-weight: bold;
+  text-align: justify;
+  border-right-style: solid;
+  border-right-width: medium;
+}
+
+#headerInfo div a {
+  background-color: white;
+  color: black;
+  font-size: 18px;
+  padding: 0.8em;
+  transition: 0.3s;
+  text-decoration: none;
+  text-align: center;
+  margin: 10px;
+  max-width: 9em;
+  font-weight: bold;
+}
+
+
+#headerInfo div a:hover {
+  background-color: black;
+  color: white;
+}
+
+ul {
+  display: flex;
+  list-style: none;
+  text-decoration: none;
+}
+
+main {
+  margin: 3rem 5rem;
+}

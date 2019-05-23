@@ -1,0 +1,71 @@
+:root {
+  --perSlide: 4;
+}
+
+body {
+  font-size: 18px;
+  display: grid;
+  grid-template-rows: 70% 30%;
+  height: 100vh;
+  margin: 0;
+}
+
+#adminc {
+  box-sizing: border-box;
+  padding: 0.6rem;
+}
+
+.adminNotices {
+  display: grid;
+  grid-template-columns: repeat(var(--perSlide), 1fr);
+  height: 100%;
+  grid-gap: 0.6rem; 
+}
+
+
+
+.rest {
+  background-color: lightskyblue;
+  box-sizing: border-box;
+  z-index: 1000;
+  display: grid;
+  grid-gap: 1rem;
+  width: 100%;
+  grid-template-columns: 33% 30% 35%;
+  box-sizing: border-box;
+  padding: 0.6rem;  
+}
+
+#pollContId {
+  display: grid;
+  grid-template-rows: repeat(auto, 1fr);
+  background-color: lightcoral;
+  
+  box-sizing: border-box;
+}
+
+.noticeCont {
+  box-sizing: border-box;
+}
+
+.eventSlide {
+  width : 100%;
+  box-sizing: border-box;
+  background-color: bisque;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.option {
+  font-size: 0.8rem;
+}
+
+.admin img {
+  width: 100%;
+}
+
+.admin {
+  height:100%;
+}
+
+

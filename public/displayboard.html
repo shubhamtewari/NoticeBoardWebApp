@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>display board</title>
+    <meta name="description" content="This page will display the various information elements for the users. The information
+    will be retireved from firebase.">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/displayboard.css">
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+  </head>
+
+  <body id="page">
+    <div id="adminc"></div>
+    <div id="restc" class="rest">
+      
+      <div id="idPollCont" class="pollCont">
+        <div class="pollContId">
+        <span>Lorem ipsum dolor sit ametit illo nulla nam natus aliquid neque voluptatum architecto.</span>
+        <div class="option">Yes</div>
+        <div class="progress">
+          <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+        <div class="option">No</div>
+        <div class="progress">
+          <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+        <div class="option">Don't Care</div>
+        <div class="progress">
+          <div class="progress-bar bg-warning" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+        <div class="option">No</div>
+        <div class="progress">
+          <div class="progress-bar bg-danger" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+        </div>
+      </div>
+      
+      <div id="idNoticeCont" class="noticeCont">
+          <div class="notice contChild">
+            <h3><b>loading...</b></h3>
+            <p>loading...</p>
+            <div class="contBottomBar">
+              <span id="author">loading...</span>
+              <span id="votes">
+                <a id="positiveButton" class="material-icons">thumb_up_alt</a>
+                <span class="voteNo">23</span>
+                <a id="negativeButton" class="material-icons">thumb_down_alt</a>
+                <span class="voteNo">45</span>
+              </span>
+            </div>
+          </div>
+      </div>
+      <div id = "idEventCont" class="eventCont">
+          <div class="event contChild">
+              <span>#upcomingevent</span>
+              <h3>loading...</h3>
+              <p>loading...</p>
+              <span>loading...</span>
+            </div>
+            <div class="event contChild">
+                <span>#upcomingevent</span>
+                <h3>loading...</h3>
+                <p>loading...</p>
+                <span>loading...</span>
+              </div>
+      </div>
+    </div>
+
+    
+<!--jquery, popper, bootstrap imports-->
+<script
+src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+crossorigin="anonymous"
+></script>
+<script
+src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+crossorigin="anonymous"
+></script>
+<script
+src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+crossorigin="anonymous"
+></script>
+  
+    <!-----------------scripts-------------------->
+    <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase.js"></script>
+    <!--Firebase App (the core Firebase SDK) is always required and must be listed first-->
+    <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase-app.js"></script>
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.4/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-storage.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+    apiKey: "AIzaSyDCck_QhocplLAagDRChabxnUlzjmTc0yg",
+    authDomain: "notice-board-60616.firebaseapp.com",
+    databaseURL: "https://notice-board-60616.firebaseio.com",
+    projectId: "notice-board-60616",
+    storageBucket: "notice-board-60616.appspot.com",
+    messagingSenderId: "118239249055",
+    appId: "1:118239249055:web:95befc02731ddb49"
+  };
+      firebase.initializeApp(config);
+    </script>
+    
+    <script type="text/javascript">
+
+      //------creating elements------------//
+      function createPoll(pollQuestion, pollOpt, pollOptVote, noOfOpt, asker) {
+        var barThemes = ["bg-success", "bg-danger", "bg-info", "bg-warning"];
+        function pollQues(pollOptSing) {
+          return "<span class=\"option\">"+pollOptSing+"</span>";
+        }
+        function pollBar(pollVoteSing, bartheme) {
+          return "<div class=\"progress\"> <div class=\"progress-bar "+bartheme+"\" role=\"progressbar\" style=\"width: "+pollVoteSing+"%\" aria-valuenow=\""+pollVoteSing+"\" aria-valuemin=\"0\" aria-valuemax=\"100\"></div> </div>";
+        }
+        var pollElementHeader = "<div id=\"pollId\" class=\"pollSlide\"><span>"+pollQuestion+"</span>";
+        var pollFooter = "</div>";
+          for(let i=0;i<noOfOpt;i++) {
+           pollElementHeader += pollQues(pollOpt[i]) + pollBar(pollOptVote[i], barThemes[i]);
+         }
+         return pollElementHeader + pollFooter;
+         }
+
+         //notice
+         function createNotice(noticeTitle, noticeBody, noticeAuthor, posVotes, negVotes) {
+          return "<div class=\"noticeSlide\"><h3><b>"+noticeTitle+"</b></h3> <p>"+noticeBody
+            +"</p> <div class=\"contBottomBar\"> <span id=\"author\">@"+noticeAuthor.toLowerCase().replace(/\s/g, '')+"</span> <span id=\"votes\"> <a id=\"positiveButton\" class=\"material-icons\">thumb_up_alt</a>"
+              +"<span class=\"voteNo\">"+posVotes+"</span> <a id=\"negativeButton\" class=\"material-icons\">thumb_down_alt</a> <span class=\"voteNo\">"+negVotes+"</span>"+
+            "</span> </div>"+"</div>";
+         }
+
+         //event
+         function createEvent(eventStatus, eventName, eventDetails, eventStart, eventEnd) {
+          return "<div class=\"eventSingle\"><span>"+"#"+eventStatus.toLowerCase()+"event"+"</span>"+
+          "<h5>"+eventName+"</h5>"+
+          "<p>"+eventDetails+"</p>"+
+          "<span>"+eventStart+" to "+eventEnd+"</span>"+"</div>";
+         }
+
+      //-------carousel----------//
+
+      //admin Notice
+      var slideIndex = 0;
+      function carousel() {
+      var i;
+      var x = document.getElementsByClassName("visibleSlides");
+        for (i = 0; i < x.length; i++) {
+                  x[i].style.display = "none"; 
+        }
+        slideIndex++;
+        if (slideIndex > x.length) {slideIndex = 1} 
+        x[slideIndex-1].style.display = "grid";
+        setTimeout(carousel, 4000); // Change image every 2 seconds
+        }
+
+        //carousel poll
+        var slideIndexPoll = 0;
+      function carouselPoll() {
+      var i;
+      var x = document.getElementsByClassName("pollSlide");
+
+        for (i = 0; i < x.length; i++) {
+                  x[i].style.display = "none"; 
+        }
+        slideIndexPoll++;
+        if (slideIndexPoll > x.length) {slideIndexPoll = 1} 
+        x[slideIndexPoll-1].style.display = "grid";
+        setTimeout(carouselPoll, 2000); // Change image every 2 seconds
+        }
+
+        //carousel event
+        var slideIndexEvent = 0;
+      function carouselEvent() {
+      var i;
+      var x = document.getElementsByClassName("eventSlide");
+
+        for (i = 0; i < x.length; i++) {
+                  x[i].style.display = "none"; 
+        }
+        slideIndexEvent++;
+        if (slideIndexEvent > x.length) {slideIndexEvent = 1} 
+        x[slideIndexEvent-1].style.display = "grid";
+        setTimeout(carouselEvent, 5000); // Change image every 5 seconds
+        }
+
+        //carousel notice
+        var slideIndexNotice = 0;
+      function carouselNotice() {
+      var i;
+      var x = document.getElementsByClassName("noticeSlide");
+
+        for (i = 0; i < x.length; i++) {
+                  x[i].style.display = "none"; 
+        }
+        slideIndexNotice++;
+        if (slideIndexNotice > x.length) {slideIndexNotice = 1} 
+        x[slideIndexNotice-1].style.display = "grid";
+        setTimeout(carouselNotice, 3000); // Change image every 3 seconds
+        }
+        //------------carousel end-------------//
+
+      //------------displaying the admin notices-----------------//  
+      function loadAdminImages(adminNotices, perSlide) {
+        console.log(adminNotices);
+        var root = document.documentElement;
+          root.style.setProperty("--perSlide", perSlide);
+          var len = 0;
+          for(var i in adminNotices) {
+          len++;
+        }
+          //console.log("leght:"+len);
+          var noOfSlides = Math.ceil(len/perSlide);
+          
+          if(len%perSlide!=0) {
+            noOfSlides+1;
+          }
+          console.log(noOfSlides);
+          var adminNotice = "<div class=\"admin\"><img class=\"images\" src=\"\" alt=\"\"></div>";
+          var adminNoticeSlideGroup = "<div class=\"visibleSlides adminNotices\">";
+          for(let i = 0;i<perSlide;i++) {
+            adminNoticeSlideGroup += adminNotice;
+          } 
+          adminNoticeSlideGroup += "</div>";
+          console.log(adminNoticeSlideGroup);
+          var admincont = document.getElementById("adminc");
+          for(let i = 0;i<noOfSlides;i++) {
+            admincont.innerHTML += adminNoticeSlideGroup;
+          } 
+          var images = document.getElementsByClassName("images");
+          var j=0;
+          for(var i in adminNotices) {
+            images[j].id = adminNotices[i].noticeTimeStamp;
+            j++;
+          }
+          console.log(images);
+          console.log(images);
+          for(let i = 0;i<images.length;i++) {
+            var storageRef = firebase.storage().ref("AdminNotices/demo/"+images[i].id);
+          storageRef.getDownloadURL().then(function(url) {
+            console.log(url);
+            images[i].src = url;
+          });
+          }
+         }
+
+      //-------retieving the admin notices from database and calling carousel on them------------//   
+      firebase.database().ref("AdminNoticesStorage/demo").on("value", function(snapshot) {
+        var adminNotices = snapshot.val();
+        //4 notices perslide
+        loadAdminImages(adminNotices, 4);
+        carousel();
+        });
+
+      //retrieving the poll data from database and calling carousel on it------------------------//
+        firebase.database().ref("demo/displayBoard/presentPollStructures").on("value", function(snapshot) {
+        var pollList = snapshot.val();
+
+        console.log("here"+pollList);
+        var pollCont = document.getElementById("idPollCont");
+        pollCont.innerHTML = "";
+        for(let i=0;i<pollList.length;i++) {
+          pollCont.innerHTML += createPoll(pollList[i].pollQuestion, pollList[i].pollOptions, pollList[i].pollOptionsVote, pollList[i].numberOfOptions, pollList[i].customer.name);
+        }
+        carouselPoll();
+      });
+
+      //retrieving the notice data from database and calling carousel on it------------------------//
+      firebase.database().ref("demo/displayBoard/presentNoticeStructures").on("value", function(snapshot) {
+        noticeList = snapshot.val();
+      console.log(noticeList);
+      var noticeCont = document.getElementById("idNoticeCont");
+      noticeCont.innerHTML = "";
+      for(let i=0;i<noticeList.length;i++) {
+        noticeCont.innerHTML += createNotice(noticeList[i].noticeTitle, noticeList[i].noticeBody, noticeList[i].noticeCustomer.name, noticeList[i].positiveVotes, noticeList[i].negativeVotes);
+      }
+        carouselNotice();
+      });
+
+      //retrieving the event data from database and calling carousel on it------------------------//
+      firebase.database().ref("demo/displayBoard/presentEventStructures").on('value',function(snapshot) {
+      eventList = snapshot.val();
+      console.log(eventList);
+      var eventCont = document.getElementById("idEventCont");
+      eventCont.innerHTML = "";
+      var j = 0;
+      var eventSlideHeader = "";
+      while(j<eventList.length) {
+        
+        eventSlideHeader += "<div class=\"eventSlide\">"+ createEvent(eventList[j].eventStatus, eventList[j].eventName, eventList[j].eventDetails, eventList[j].eventStartDate, eventList[j].eventEndDate)
+        + createEvent(eventList[j+1].eventStatus, eventList[j+1].eventName, eventList[j+1].eventDetails, eventList[j+1].eventStartDate, eventList[j+1].eventEndDate)
+        +"</div>";
+          j += 2;
+      }
+      
+      eventCont.innerHTML = eventSlideHeader;
+      console.log("events"+eventCont);
+      
+      carouselEvent();
+      }); 
+        
+    </script>
+  </body>
+</html>
