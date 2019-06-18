@@ -4,6 +4,10 @@ To be used by a college of 2000 students.
 
 >Will be used starting from the month of August, 2019 in GBPIET Ghurdauri.
 
+[Click here for website (Deployed using firebase Hosting)](https://notice-board-60616.firebaseapp.com)
+**Warning: The *Feed page* is not responsive and for mobile only!**
+**Warning: The *Board page* is desktop only**                 
+
 **Languages :** 
 
 - HTML
