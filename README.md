@@ -6,7 +6,7 @@ To be used by a college of 2000 students.
 
 [Click here for website (Deployed using firebase Hosting)](https://notice-board-60616.firebaseapp.com)
 **Warning: The *Feed page* is not responsive and for mobile only!**
-**Warning: The *Board page* is desktop only**                 
+**Warning: The *Board page* is desktop only!**                 
 
 **Languages :** 
 
