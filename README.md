@@ -4,6 +4,10 @@ To be used by a college of 2000 students.
 
 >Will be used starting from the month of August, 2019 in GBPIET Ghurdauri.
 
+**Features :**
+1. Real time retrieval of *image notices, events and polls* using the the Firebase Database API.
+2. Displaying this data in a simple UI.
+
 [Click here for website (Deployed using firebase Hosting)](https://notice-board-60616.firebaseapp.com)
 **Warning: The *Feed page* is not responsive and for mobile only!**
 **Warning: The *Board page* is desktop only!**                 
@@ -15,11 +19,6 @@ To be used by a college of 2000 students.
 - CSS
 
 - JavaScript
-
-
-**Features :**
-1. Real time retrieval of *image notices, events and polls* using the the Firebase Database API.
-2. Displaying this data in a simple UI.
 
 ---
 
